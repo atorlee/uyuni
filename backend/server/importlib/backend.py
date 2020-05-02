@@ -668,7 +668,7 @@ class Backend:
     def lookupEVRs(self, evrHash):
         sql = "select LOOKUP_EVR(:epoch, :version, :release) id from dual"
         h = self.dbmodule.prepare(sql)
-        for evr in sorted(evrHash.keys(), key=lambda x: (x[0] if x[0] != '' else None, x[1], x[2])):
+        for evr in sorted(evrHash.keys()):
             epoch, version, release = evr
             if epoch == '' or epoch is None:
                 epoch = None
